@@ -1,0 +1,54 @@
+<div class="row">
+	<form (submit)="submit()" [formGroup]="ruoloForm" novalidate>
+		<div class="card grey lighten-4">
+
+			<div class="card-content">
+				<span class="card-title">Dettaglio Ruolo</span>
+				<div class="row">
+					<div class="col s12">
+						<div class="row">
+							<div class="input-field col s12">
+								<input
+									[ngClass]="inputTemplateValidate(ruoloForm.controls.nome)"
+									type="text" id="nome" formControlName="nome"> <label
+									for="nome">Nome</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input
+									[ngClass]="inputTemplateValidate(ruoloForm.controls.descrizione)"
+									type="text" id="descrizione" formControlName="descrizione"> <label
+									for="descrizione">Descrizione</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								<input
+									[ngClass]="inputTemplateValidate(ruoloForm.controls.ruoloJee)"
+									type="text" id="ruoloJee" formControlName="ruoloJee"> <label
+									for="ruoloJee">Ruolo JEE</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col s12 center-align">
+								<button (click)="onReset()"
+									class="waves-effect waves-light btn-large">Reset</button>
+								<button [disabled]="!ruoloForm.valid" type="submit"
+									class="waves-effect waves-light btn-large">Salva</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<app-ruoloaudit [ruolo]="ruolo"></app-ruoloaudit>
+				</div>
+			</div>
+		</div>
+
+		
+	</form>
+
+</div>

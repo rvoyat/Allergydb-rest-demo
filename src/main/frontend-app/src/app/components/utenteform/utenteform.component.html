@@ -1,0 +1,99 @@
+<div class="row">
+	<form (submit)="submit()" [formGroup]="utenteForm">
+		<div class="card grey lighten-4">
+			
+			<div class="card-content">
+			<span class="card-title">Dettaglio Utente</span>
+				<div class="row">
+					<div class="col s12">
+						<div class="row">
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.nome)"
+									type="text" id="nome" formControlName="nome">
+								<label for="nome">Nome</label>
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.cognome)"
+									type="text" id="cognome" formControlName="cognome"> <label
+									for="cognome">Cognome</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<i class="material-icons prefix">email</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.email)"
+									type="text" id="email" formControlName="email">
+								<label for="email">Email</label>
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.login)"
+									type="text" id="login" formControlName="login">
+								<label for="login">Login</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+								<i class="material-icons prefix">phone</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.telefono)"
+									type="text" id="telefono" formControlName="telefono">
+								<label for="telefono">Telefono</label>
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">phone_iphone</i>
+								<input
+									[ngClass]="inputTemplateValidate(utenteForm.controls.telefonoCell)"
+									type="text" id="telefonoCell" formControlName="telefonoCell">
+								<label for="telefonoCell">Mobile</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s6">
+							    <select materialize="material_select" [materializeSelectOptions]="lingue" formControlName="linguaId" [ngClass]="inputTemplateValidate(utenteForm.controls.linguaId)"> 
+							      <option *ngFor="let lingua of lingue" [value]="lingua.linguaId">{{lingua.descrizione}}</option>
+							    </select>
+							    <label for="lingua">Lingua</label>
+						  </div>
+							<div class="col s6">
+								<label>Stato</label>
+								<div class="switch">
+									<label> Off <input type="checkbox"
+										formControlName="stato"> <span class="lever"></span>
+										On
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row" formGroupName="gruppi">
+							<fieldset>
+								<legend>Gruppi</legend>
+								<p *ngFor="let gruppo of allGruppi">
+							      <input type="checkbox" [id]="gruppo.gruppoId" [formControlName]="gruppo.gruppoId" />
+							      <label [for]="gruppo.gruppoId">{{gruppo.nome}}</label>
+							    </p>
+						    </fieldset>
+						</div>
+						
+						<div class="row">
+							<div class="col s12 center-align">
+								<button (click)="onReset()"
+									class="waves-effect waves-light btn-large">Reset</button>
+								<button [disabled]="!utenteForm.valid" type="submit"
+									class="waves-effect waves-light btn-large">Salva</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+</div>

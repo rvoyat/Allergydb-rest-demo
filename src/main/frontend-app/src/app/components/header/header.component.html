@@ -1,0 +1,28 @@
+
+<nav>
+	<div class="nav-wrapper red darken-1">
+		<a routerLink="/home" class="brand-logo"> <img
+			src="assets/images/logo.jpg" alt="" class="responsive-img">
+		</a>
+
+		<!-- Dropdown Structure -->
+		<ul id='dropdown-amministrazione' class='dropdown-content'
+			style="width: 143px; position: absolute; top: 64px; left: 646.917px; opacity: 1; display: none;">
+			<li><a routerLink="/amministrazione/ricercautente">Utente</a></li>
+			<li><a routerLink="/amministrazione/ricercagruppo">Gruppo</a></li>
+			<li><a routerLink="/amministrazione/ricercaruolo">Ruolo</a></li>
+		</ul>
+
+
+		<ul class="right">
+			<li >{{authService.utente?authService.utente.nome+" "+authService.utente.cognome: ""}}</li>
+			<li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+			<li routerLinkActive="active"><a routerLink="/fileuploader">File Uploader</a></li>
+			<li routerLinkActive="active"><a routerLink="/autocomplete">Autocomplete</a></li>
+			<li routerLinkActive="active"><a routerLink="/select2">Select2</a></li>
+			<li routerLinkActive="active"><a materialize="dropdown"
+				data-activates='dropdown-amministrazione' data-belowOrigin="true">Amministrazione</a></li>
+			
+		</ul>
+	</div>
+</nav>

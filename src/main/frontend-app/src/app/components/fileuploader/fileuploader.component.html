@@ -1,0 +1,17 @@
+<div class="row file-field input-field">
+	<div class="btn">
+		<span>File<i class="material-icons left">file_upload</i></span> <input type="file"
+			(change)="onFileSelection($event)">
+	</div>
+	<div class="file-path-wrapper">
+		<input class="file-path validate" type="text">
+	</div>
+</div>
+<div class="row">
+	<div class="col s8 offset-s2">
+		<app-datatable [dataset]="files">
+			<app-datacolumn [value]="'name'" [header]="'Nome'" style="width:95%;"></app-datacolumn>
+			<app-functioncolumn [icon]="'file_download'" (onAction)="onDownload($event)"></app-functioncolumn>
+		</app-datatable>
+	</div>
+</div>

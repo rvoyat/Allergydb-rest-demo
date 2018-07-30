@@ -1,0 +1,18 @@
+
+<app-header></app-header>
+
+<breadcrumb #parent>
+<nav>
+	<div class="nav-wrapper white" >
+		<div class="col s12" style="margin-left: 1em;">
+			<a class="breadcrumb red-text text-darken-2"
+				*ngFor="let route of parent.breadcrumbs" href=""
+				[routerLink]="[route.url]">{{ route.displayName }}</a>
+		</div>
+	</div>
+</nav>
+</breadcrumb>
+<router-outlet></router-outlet>
+
+
+<app-footer></app-footer>

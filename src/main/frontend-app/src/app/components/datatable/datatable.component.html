@@ -1,0 +1,22 @@
+<table class="striped highlight">
+	<thead>
+		<tr>
+			<th *ngFor="let column of columns" [style]="column.getStyle()">
+				<span *ngIf="!column.sortable">{{column.header}}</span>
+				<a (click)="sort(column.value)" style="cursor: pointer;" *ngIf="column.sortable">{{column.header}}</a>
+				<i class="material-icons" *ngIf="sortedColumn == column.value && sortedType == 'ASC' && column.sortable">arrow_drop_up</i>
+				<i class="material-icons" *ngIf="sortedColumn == column.value && sortedType == 'DESC' && column.sortable">arrow_drop_down</i>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr
+			*ngFor="let row of dataset">
+			<td *ngFor="let column of columns">{{resolve(column.value, row)}}</td>
+			<td *ngFor="let functioncolumn of functioncolumns">
+				<a class="btn-floating waves-effect waves-light red"><i
+					class="small material-icons" (click)="onAction(functioncolumn, row)">{{functioncolumn.icon}}</i></a>
+			</td>
+		</tr>
+	</tbody>
+</table>
