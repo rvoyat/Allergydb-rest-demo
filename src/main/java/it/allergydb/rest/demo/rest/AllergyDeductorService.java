@@ -22,16 +22,13 @@ public class AllergyDeductorService {
 	
 	@Autowired
 	private LSVMSpark sparkmllib;
-
-	/*@RequestMapping(value = "/api/predictAllergy", params = { "idRequest","allergene", "symptoms" }, method = RequestMethod.GET)
-	/*public ResponseEntity<AllergyPrediction> predictAllergy(@RequestParam("idRequest") Long idRequest,
-			@RequestParam("allergene") String allergene, @RequestParam("symptoms") String symptoms ) {*/
+ 
 	@RequestMapping(value = "/api/predictAllergy", params = { "idRequest" },   method = RequestMethod.POST)
 	public ResponseEntity<AllergyPrediction> predictAllergy(@RequestParam("idRequest") Long idRequest,@RequestBody AllergyPrediction allergyPrediction ) {
  
 		HttpStatus status;
 		try{
-			String prediction ="95.6"; //sparkmllib.runModel(allergyPrediction.getAllergene(), allergyPrediction.getSymptoms());
+			String prediction = sparkmllib.runModel(allergyPrediction.getAllergene(), allergyPrediction.getSymptoms());
 			allergyPrediction.setPrediction(prediction); 
 			status =HttpStatus.OK;
 		}catch(Exception e ){
