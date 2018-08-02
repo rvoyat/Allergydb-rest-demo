@@ -5,4 +5,4 @@ https://it.wikipedia.org/wiki/Representational_State_Transfer#La_relazione_tra_g
 
 Elenco delle API 
 
-/api/allergyDeductor  method POST carica modello SVM e dopo il predict classifica se malato o no  
+/api/predictAllergy  method POST carica modello SVM e dopo il predict restituisce la percentuale di possibilita di essere affetto da quell allergia  

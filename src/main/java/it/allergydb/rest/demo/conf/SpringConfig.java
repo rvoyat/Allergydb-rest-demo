@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@ComponentScan({ "it.allergydb.rest" })
+@ComponentScan({ "it.allergydb" })
 @EnableWebMvc
 @EnableTransactionManagement
 public class SpringConfig extends WebMvcConfigurerAdapter {
