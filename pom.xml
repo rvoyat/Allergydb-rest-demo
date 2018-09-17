@@ -56,12 +56,12 @@
             <version>2.2.1</version>
         <exclusions>
             <exclusion>
-  <groupId>org.codehaus.jackson</groupId>
-  <artifactId>jackson-mapper-asl</artifactId>
+				  <groupId>org.codehaus.jackson</groupId>
+				  <artifactId>jackson-mapper-asl</artifactId>
             </exclusion>
             <exclusion>
-  <groupId>org.codehaus.jackson</groupId>
-    <artifactId>jackson-core-asl</artifactId>
+  					<groupId>org.codehaus.jackson</groupId>
+    				<artifactId>jackson-core-asl</artifactId>
             </exclusion>
         </exclusions> 
         </dependency>
@@ -69,14 +69,14 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.11</artifactId>
             <version>2.2.1</version>
-                    <exclusions>
+            <exclusions>
             <exclusion>
-  <groupId>org.codehaus.jackson</groupId>
-  <artifactId>jackson-mapper-asl</artifactId>
+				  <groupId>org.codehaus.jackson</groupId>
+				  <artifactId>jackson-mapper-asl</artifactId>
             </exclusion>
             <exclusion>
-  <groupId>org.codehaus.jackson</groupId>
-    <artifactId>jackson-core-asl</artifactId>
+  					<groupId>org.codehaus.jackson</groupId>
+    				<artifactId>jackson-core-asl</artifactId>
             </exclusion>
         </exclusions> 
         </dependency>  

@@ -1,6 +1,7 @@
 package it.allergydb.rest.demo.rest;
 
 import it.allergydb.mllib.LSVMSpark;
+import it.allergydb.mllib.NaiveBayesSpark;
 import it.allergydb.rest.demo.entity.AllergyPrediction;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class AllergyDeductorService {
 	
 	@Autowired
 	private LSVMSpark sparkmllib;
+
+	@Autowired
+	private NaiveBayesSpark naiveBayesSpark;
  
 	@RequestMapping(value = "/api/predictAllergy", params = { "idRequest" },   method = RequestMethod.POST)
 	public ResponseEntity<AllergyPrediction> predictAllergy(@RequestParam("idRequest") Long idRequest,@RequestBody AllergyPrediction allergyPrediction ) {
@@ -40,6 +44,25 @@ public class AllergyDeductorService {
 
 		return new ResponseEntity<>(allergyPrediction,status);
 	}
+	 
+		@RequestMapping(value = "/api/predictAllergy", params = { "idRequest" },   method = RequestMethod.POST)
+		public ResponseEntity<AllergyPrediction> predictAllergyNB(@RequestParam("idRequest") Long idRequest,
+				@RequestBody AllergyPrediction allergyPrediction ) {
+	 
+			HttpStatus status;
+			try{
+				String prediction = naiveBayesSpark.runModel(allergyPrediction.getAllergene(), allergyPrediction.getSymptoms());
+				allergyPrediction.setPrediction(prediction); 
+				status =HttpStatus.OK;
+			}catch(Exception e ){
+				e.printStackTrace();
+				allergyPrediction.setError("ELABORATION ERROR:"+e.getMessage()); 
+				status =HttpStatus.BAD_REQUEST;
+			}
+
+
+			return new ResponseEntity<>(allergyPrediction,status);
+		}
 
 	 
 }
